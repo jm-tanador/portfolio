@@ -367,23 +367,88 @@ export default {
 
 /* Mobile Responsiveness */
 @media (max-width: 1024px) {
+  /* 1. Reduce the huge side padding so content has room to breathe */
+  .portfolio-wrapper {
+    padding: 0 1.5rem;
+    overflow-x: hidden; /* Safety net to prevent horizontal scroll */
+  }
+
+  /* 2. Fix the Navbar squashing */
+  .navbar {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+  }
+  
+  .nav-links {
+    gap: 1rem;
+    font-size: 0.8rem;
+    padding: 0;
+  }
+
+  /* 3. Stack the content and image vertically */
   .hero {
     flex-direction: column;
-    text-align: center; /* This helps center general text */
-    align-items: center; /* This centers the flex children */
+    text-align: center;
+    padding: 2rem 0;
+    gap: 2rem;
   }
 
   .hero-content {
-    order: 2;
-    max-width: 100%;    /* Allow it to use full screen width */
+    order: 2; /* Text goes below the image */
+    max-width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Forces buttons and text to center */
-    text-align: center;
+    align-items: center;
+  }
+
+  /* 4. Fix Title wrapping and size */
+  .main-title {
+    font-size: 2.2rem !important; /* Smaller for mobile */
+    line-height: 1.2;
+    white-space: normal; /* Allow it to wrap naturally */
+    width: 100%;
+  }
+
+  /* 5. CRITICAL FIX: The Image Width */
+  .hero-image-container {
+    order: 1;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .image-overlay {
+    width: 100% !important; /* Forces it to fit the phone screen */
+    max-width: 300px;        /* Limits size so it doesn't get huge */
+    height: auto;
+    aspect-ratio: 1 / 1;    /* Keeps it square */
+  }
+
+  .profile-img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* 6. Buttons and Icons */
+  .action-buttons {
+    flex-direction: column;
+    width: 100%;
   }
   
-  .main-title {
-    font-size: 3rem;    /* Shrink font size for mobile so it doesn't wrap weirdly */
+  .btn-primary, .btn-secondary {
+    width: 100%; /* Full width buttons are easier to tap on mobile */
+  }
+
+  /* 7. Footer Fix */
+  .footer {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .footer-links {
+    justify-content: center;
   }
 }
 </style>
