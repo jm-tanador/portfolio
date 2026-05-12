@@ -450,5 +450,25 @@ export default {
   .footer-links {
     justify-content: center;
   }
+
+  .status-tag {
+    /* 1. Reduce the distance from the edges so it stays in the corner */
+    bottom: -5px !important; 
+    right: -5px !important;  /* Slight negative value makes it pop like the original design */
+    
+    /* 2. Shrink the tag itself so it doesn't cover too much of the image */
+    padding: 6px 12px !important;
+    font-size: 0.7rem !important;
+    
+    /* 3. Ensure it stays on top of the image */
+    z-index: 20;
+  }
+
+  .image-overlay {
+    /* Ensure the container is exactly the right size for the image */
+    width: 280px !important; 
+    height: 280px !important;
+    margin: 0 auto; /* Keep it centered */
+  }
 }
 </style>
