@@ -20,9 +20,9 @@
                     {{ displayedText }}<span class="cursor">|</span>
                 </h1>
                 <p class="description">
-                    Passionate software engineer specializing in front-end and full-stack
-                    development. Building clean, efficient, and scalable user experiences
-                    with a focus on reductionist minimalism.
+                    Passionate full‑stack web developer skilled in both front‑end and 
+                    back‑end systems. Dedicated to building clean, efficient, and scalable 
+                    user experiences.
                 </p>
 
                 <!-- Icon Buttons -->
@@ -43,11 +43,11 @@
             <!-- Image Section -->
             <div class="hero-image-container">
                 <div class="image-overlay">
-                    <!-- Replace with actual image source -->
-                    <img src="https://avatars.githubusercontent.com/u/275907735?s=400&u=ed8ea5b3f7a8d3105ecb92b0e025af8d7dfa9806&v=4" alt="JM Tanador" />
-                    <div class="status-tag">
-                        > status: available_for_hire
-                    </div>
+                <!-- Ensure you are using the new .png file -->
+                <img src="/src/assets/img-profile.png" alt="JM Tanador" class="profile-img" />
+                <div class="status-tag">
+                    > status: available_for_hire
+                </div>
                 </div>
             </div>
         </main>
@@ -55,7 +55,7 @@
         <!-- Footer -->
         <footer class="footer">
             <div class="copyright">
-                Copyright © 2024 — Made by Tahmid Ahmed
+                Copyright © 2026 — Made by JM Tanador
             </div>
             <div class="footer-links">
                 <a href="#">GitHub</a>
@@ -194,7 +194,8 @@ export default {
 }
 
 .hero-content {
-  max-width: 500px;
+  max-width: 800px; /* Increased from 500px */
+  width: 100%;
 }
 
 .greeting {
@@ -311,26 +312,36 @@ export default {
 .image-overlay {
   position: relative;
   width: 450px;
-  height: 600px;
-  background: #111;
+  height: 450px;
+  /* REMOVE background: #111; so the grid shows through */
+  background: transparent; 
+  display: flex;
+  align-items: flex-end; /* Keeps you at the bottom of the container */
 }
 
-.image-overlay img {
+.profile-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  /* This filter keeps the cool black and white look */
   filter: grayscale(100%) contrast(110%);
+  
+  /* OPTIONAL: Add a subtle glow/shadow so you don't blend into the pure black */
+  /* drop-shadow: 0 0 20px rgba(255, 255, 255, 0.05); */
 }
 
+/* Ensure the status tag still looks good */
 .status-tag {
   position: absolute;
   bottom: 20px;
   right: 0;
-  background: rgba(40, 40, 40, 0.9);
+  background: rgba(20, 20, 20, 0.8); /* Slightly darker for readability */
+  backdrop-filter: blur(5px); /* Makes the grid look blurry behind the tag */
   padding: 10px 20px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.8rem;
   border-left: 2px solid #555;
+  z-index: 10;
 }
 
 /* Footer */
