@@ -2,6 +2,8 @@ import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
 
+import router from './router'
+
 // VUETIFY
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
@@ -21,6 +23,7 @@ const vuetify = createVuetify({
 
 const app = createApp(App)
 app.use(vuetify) // This attaches your icons and components
+app.use(router)
 app.mount('#app')
 
 // DELETE OR COMMENT OUT THE LINE BELOW:
