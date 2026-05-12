@@ -320,25 +320,25 @@ export default {
 }
 
 .profile-img {
-  width: 100%;
-  height: 100%;
-  /* Change to cover to ensure the image edges are pushed 
-     beyond the visible fade area */
-  object-fit: cover; 
-  
-  filter: grayscale(100%) contrast(110%);
+    width: 100%;
+    height: 100%;
+    /* Change to cover to ensure the image edges are pushed 
+        beyond the visible fade area */
+    object-fit: cover; 
+    
+    filter: grayscale(100%) contrast(95%);
 
-  /* NEW MASK: Fades all edges (Top, Bottom, Left, Right) */
-  -webkit-mask-image: radial-gradient(
-    ellipse at center, 
-    black 25%, 
-    transparent 75%
-  );
-  mask-image: radial-gradient(
-    ellipse at center, 
-    black 25%, 
-    transparent 75%
-  );
+    /* NEW MASK: Fades all edges (Top, Bottom, Left, Right) */
+    -webkit-mask-image: radial-gradient(
+        ellipse at center, 
+        black 15%, 
+        transparent 75%
+    );
+    mask-image: radial-gradient(
+        ellipse at center, 
+        black 45%, 
+        transparent 75%
+    );
 }
 
 /* Ensure the status tag still looks good */
