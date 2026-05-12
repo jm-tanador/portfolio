@@ -123,211 +123,222 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=JetBrains+Mono&family=Playfair+Display:wght@700&display=swap');
 
 .portfolio-wrapper {
-  min-height: 100vh;
-  background-color: #0a0a0a;
-  color: #ffffff;
-  font-family: 'Inter', sans-serif;
-  padding: 0 4rem;
-  display: flex;
-  flex-direction: column;
-  
-  /* Grid Background Effect */
-  background-image: 
-    linear-gradient(to right, #1a1a1a 1px, transparent 1px),
-    linear-gradient(to bottom, #1a1a1a 1px, transparent 1px);
-  background-size: 50px 50px;
+    min-height: 100vh;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    padding: 0 4rem;
+    display: flex;
+    flex-direction: column;
+    
+    /* Grid Background Effect */
+    background-image: 
+        linear-gradient(to right, #1a1a1a 1px, transparent 1px),
+        linear-gradient(to bottom, #1a1a1a 1px, transparent 1px);
+    background-size: 50px 50px;
 }
 
 /* Navbar */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem 0;
-  border-bottom: 1px solid #1a1a1a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid #1a1a1a;
 }
 
 .logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  font-weight: bold;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 .nav-links {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.9rem;
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
 }
 
 .nav-links li {
-  cursor: pointer;
-  color: #888;
-  transition: color 0.3s;
+    cursor: pointer;
+    color: #888;
+    transition: color 0.3s;
 }
 
 .nav-links li.active, .nav-links li:hover {
-  color: #fff;
-  text-decoration: underline;
-  text-underline-offset: 4px;
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
 .cta-talk {
-  background: white;
-  color: black;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: bold;
-  cursor: pointer;
+    background: white;
+    color: black;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 /* Hero Section */
 .hero {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 4rem;
-  padding: 4rem 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    padding: 4rem 0;
 }
 
 .hero-content {
-  max-width: 800px; /* Increased from 500px */
-  width: 100%;
+    max-width: 800px; /* Increased from 500px */
+    width: 100%;
 }
 
 .greeting {
-  font-family: 'JetBrains Mono', monospace;
-  color: #888;
-  letter-spacing: 2px;
-  font-size: 0.8rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: #888;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
 }
 
 .main-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 4.5rem;
-  margin: 1rem 0;
-  line-height: 1.1;
-  
-  /* REMOVE THIS: width: 700px; */
-  
-  /* ADD THESE: */
-  width: 100%;          /* Take full width of the parent */
-  /* text-align: center;   Center the text inside the box */
-  display: block;       
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    margin: 1rem 0;
+    line-height: 1.1;
+    
+    /* REMOVE THIS: width: 700px; */
+    
+    /* ADD THESE: */
+    width: 100%;          /* Take full width of the parent */
+    /* text-align: center;   Center the text inside the box */
+    display: block;       
 }
 
 .cursor {
-  font-weight: 200;
-  color: #555;
-  margin-left: 5px;
+    font-weight: 200;
+    color: #555;
+    margin-left: 5px;
 }
 
 .description {
-  color: #aaa;
-  line-height: 1.6;
-  margin-bottom: 2rem;
+    color: #aaa;
+    line-height: 1.6;
+    margin-bottom: 2rem;
 }
 
 /* Icons */
 .social-icons {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 2.5rem;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
 }
 
 .icon-btn {
-  background: transparent;
-  border: 1px solid #333;
-  width: 45px;
-  height: 45px;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: border-color 0.3s;
+    background: transparent;
+    border: 1px solid #333;
+    width: 45px;
+    height: 45px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.3s;
 }
 
 .icon-btn:hover {
-  border-color: #666;
+    border-color: #666;
 }
 
 /* Action Buttons */
 .action-buttons {
-  display: flex;
-  gap: 1rem;
+    display: flex;
+    gap: 1rem;
 }
 
 .btn-primary {
-  background: white;
-  color: black;
-  border: none;
-  padding: 1rem 2rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: bold;
-  cursor: pointer;
+    background: white;
+    color: black;
+    border: none;
+    padding: 1rem 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .btn-secondary {
-  background: transparent;
-  color: white;
-  border: 1px solid #333;
-  padding: 1rem 2rem;
-  font-family: 'JetBrains Mono', monospace;
-  cursor: pointer;
+    background: transparent;
+    color: white;
+    border: 1px solid #333;
+    padding: 1rem 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    cursor: pointer;
 }
 
 /*TYPING EFFECT*/
 .main-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 4.5rem;
-  margin: 1rem 0;
-  line-height: 1.1;
-  min-height: 1.2em; /* Prevents layout jump before text starts typing */
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    margin: 1rem 0;
+    line-height: 1.1;
+    min-height: 1.2em; /* Prevents layout jump before text starts typing */
 }
 
 .cursor {
-  font-weight: 200;
-  color: #ffffff;
-  margin-left: 5px;
-  animation: blink 1s infinite;
+    font-weight: 200;
+    color: #ffffff;
+    margin-left: 5px;
+    animation: blink 1s infinite;
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 /* Image Container */
 .hero-image-container {
-  position: relative;
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
+    position: relative;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .image-overlay {
-  position: relative;
-  width: 450px;
-  height: 450px;
-  /* REMOVE background: #111; so the grid shows through */
-  background: transparent; 
-  display: flex;
-  align-items: flex-end; /* Keeps you at the bottom of the container */
+    position: relative;
+    width: 450px;
+    height: 450px;
+    /* REMOVE background: #111; so the grid shows through */
+    background: transparent; 
+    display: flex;
+    align-items: flex-end; /* Keeps you at the bottom of the container */
 }
 
 .profile-img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  /* This filter keeps the cool black and white look */
-  filter: grayscale(100%) contrast(110%);
+  /* Change to cover to ensure the image edges are pushed 
+     beyond the visible fade area */
+  object-fit: cover; 
   
-  /* OPTIONAL: Add a subtle glow/shadow so you don't blend into the pure black */
-  /* drop-shadow: 0 0 20px rgba(255, 255, 255, 0.05); */
+  filter: grayscale(100%) contrast(110%);
+
+  /* NEW MASK: Fades all edges (Top, Bottom, Left, Right) */
+  -webkit-mask-image: radial-gradient(
+    ellipse at center, 
+    black 25%, 
+    transparent 75%
+  );
+  mask-image: radial-gradient(
+    ellipse at center, 
+    black 25%, 
+    transparent 75%
+  );
 }
 
 /* Ensure the status tag still looks good */
