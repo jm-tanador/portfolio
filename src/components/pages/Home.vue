@@ -83,40 +83,10 @@
                         <div class="tech-stack">
                             <span class="tech-stack-title">TECH STACK</span>
                             <div class="tech-grid">
-                                <!-- HTML -->
-                                <div class="tech-item">
-                                    <span class="tech-icon-text">HTML</span>
-                                    <span class="label">HTML5</span>
-                                </div>
-                                <!-- Javascript -->
-                                <div class="tech-item">
-                                    <span class="tech-icon-text">JS</span>
-                                    <span class="label">JavaScript</span>
-                                </div>
-                                <!-- CSS -->
-                                <div class="tech-item">
-                                    <span class="tech-icon-text">CSS</span>
-                                    <span class="label">CSS3</span>
-                                </div>
-                                <!-- PHP -->
-                                <div class="tech-item">
-                                    <span class="tech-icon-text">PHP</span>
-                                    <span class="label">PHP</span>
-                                </div>
-                                <!-- Vue js -->
-                                <div class="tech-item">
-                                    <span class="tech-icon-text">VUE</span>
-                                    <span class="label">Vue.js</span>
-                                </div>
-                                <!-- Laravel -->
-                                <div class="tech-item">
-                                    <span class="tech-icon-text">LVL</span>
-                                    <span class="label">Laravel</span>
-                                </div>
-                                <!-- MySQL -->
-                                <div class="tech-item">
-                                    <span class="tech-icon-text">SQL</span>
-                                    <span class="label">MySQL</span>
+                                <!-- TECH STACK -->
+                                <div class="tech-item" v-for="(item,index) in techStack" :key="index">
+                                    <span class="tech-icon-text">{{ item.alt }}</span>
+                                    <span class="label">{{ item.title }}</span>
                                 </div>
                             </div>
                         </div>
@@ -162,6 +132,16 @@ export default {
             charIndex: 0,
             isDeleting: false,
             typeSpeed: 150,
+            techStack: [
+                { title: 'HTML', alt: 'HTML'},
+                { title: 'Javascript', alt: 'JS'},
+                { title: 'CSS', alt: 'CSS'},
+                { title: 'PHP', alt: 'PHP'},
+                { title: 'Vue.js', alt: 'VUE'},
+                { title: 'Laravel', alt: 'LVL'},
+                { title: 'MySQL', alt: 'SQL'},
+                { title: 'Git', alt: 'GIT'},
+            ]
         };
     },
     methods: {
