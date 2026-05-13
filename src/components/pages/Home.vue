@@ -83,9 +83,9 @@
                         <div class="tech-stack">
                             <span class="tech-stack-title">TECH STACK</span>
                             <div class="tech-grid">
-                                <!-- TECH STACK -->
-                                <div class="tech-item" v-for="(item,index) in techStack" :key="index">
-                                    <span class="tech-icon-text">{{ item.alt }}</span>
+                                <div class="tech-item" v-for="(item, index) in techStack" :key="index">
+                                    <!-- Replace text with MDI icon -->
+                                    <i class="mdi" :class="item.icon" :style="{ color: item.color }"></i>
                                     <span class="label">{{ item.title }}</span>
                                 </div>
                             </div>
@@ -133,14 +133,14 @@ export default {
             isDeleting: false,
             typeSpeed: 150,
             techStack: [
-                { title: 'HTML', alt: 'HTML'},
-                { title: 'Javascript', alt: 'JS'},
-                { title: 'CSS', alt: 'CSS'},
-                { title: 'PHP', alt: 'PHP'},
-                { title: 'Vue.js', alt: 'VUE'},
-                { title: 'Laravel', alt: 'LVL'},
-                { title: 'MySQL', alt: 'SQL'},
-                { title: 'Git', alt: 'GIT'},
+                { title: 'HTML', icon: 'mdi-language-html5', color: '#E34F26' },
+                { title: 'Javascript', icon: 'mdi-language-javascript', color: '#F7DF1E' },
+                { title: 'CSS', icon: 'mdi-language-css3', color: '#1572B6' },
+                { title: 'PHP', icon: 'mdi-language-php', color: '#777BB4' },
+                { title: 'Vue.js', icon: 'mdi-vuejs', color: '#4FC08D' },
+                { title: 'Laravel', icon: 'mdi-laravel', color: '#FF2D20' }, // MDI has Laravel!
+                { title: 'MySQL', icon: 'mdi-database', color: '#4479A1' },
+                { title: 'Git', icon: 'mdi-git', color: '#F05032' },
             ]
         };
     },
@@ -186,6 +186,7 @@ export default {
 <style scoped>
 /* Importing Google Fonts to match the look */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=JetBrains+Mono&family=Playfair+Display:wght@700&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css');
 
 .portfolio-wrapper {
     min-height: 100vh;
@@ -481,21 +482,33 @@ export default {
     gap: 15px;
 }
 
-.tech-item {
-    width: 110px;
-    height: 110px;
-    border: 1px solid #222; /* Dark border to match screenshot */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    background: transparent;
+/* Target the icon specifically */
+.tech-item i.mdi {
+    font-size: 2.5rem; /* Large and clear */
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
 }
 
-.tech-item:hover {
-    border-color: #555;
-    background: #0f0f0f;
+/* Add a hover effect to the icon */
+.tech-item:hover i.mdi {
+    transform: scale(1.2); /* Slight pop on hover */
+}
+
+/* Keep your existing label style */
+.label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: #555;
+    text-transform: uppercase;
+}
+
+/* Optional: If you want the icon to be gray by default and colored on hover */
+.tech-item i.mdi {
+    color: #444 !important; /* Overrides the inline style color */
+}
+
+.tech-item:hover i.mdi {
+    color: inherit !important; /* Returns to the color defined in your data */
 }
 
 .tech-icon-text {
@@ -506,12 +519,7 @@ export default {
     margin-bottom: 8px;
 }
 
-.label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.65rem;
-    color: #555;
-    text-transform: uppercase;
-}
+
 
 /* About Image (Full Body Zoom Out) */
 .about-image-wrapper {
