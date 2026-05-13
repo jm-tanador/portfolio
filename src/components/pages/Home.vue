@@ -186,7 +186,7 @@ export default {
 <style scoped>
 /* Importing Google Fonts to match the look */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=JetBrains+Mono&family=Playfair+Display:wght@700&display=swap');
-@import url('https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css');
+/* @import url('https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css'); */
 
 .portfolio-wrapper {
     min-height: 100vh;
