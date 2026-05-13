@@ -13,43 +13,128 @@
         </nav>
 
         <!-- Main Content -->
-        <main class="hero">
-            <div class="hero-content">
-                <span class="greeting">HI, THERE!</span>
-                <h1 class="main-title">
-                    {{ displayedText }}<span class="cursor">|</span>
-                </h1>
-                <p class="description">
-                    Passionate full‑stack web developer skilled in both front‑end and 
-                    back‑end systems. Dedicated to building clean, efficient, and scalable 
-                    user experiences.
-                </p>
+        <main>
+            <!-- MAIN DASHBOARD -->
+            <section  class="hero">
+                <div class="hero-content">
+                    <span class="greeting">HI, THERE!</span>
+                    <h1 class="main-title">
+                        {{ displayedText }}<span class="cursor">|</span>
+                    </h1>
+                    <!-- <p class="description">
+                        Passionate full‑stack web developer skilled in both front‑end and 
+                        back‑end systems. Dedicated to building clean, efficient, and scalable 
+                        user experiences.
+                    </p> -->
 
-                <!-- Icon Buttons -->
-                <div class="social-icons">
-                    <button class="icon-btn"><span>🔗</span></button>
-                    <button class="icon-btn"><span>&lt;/&gt;</span></button>
-                    <button class="icon-btn"><span>share</span></button>
-                    <button class="icon-btn"><span>📸</span></button>
+                    <p class="description">
+                        Work > Sleep.
+                    </p>
+
+                    <!-- Icon Buttons -->
+                    <div class="social-icons">
+                        <button class="icon-btn"><span>🔗</span></button>
+                        <button class="icon-btn"><span>&lt;/&gt;</span></button>
+                        <button class="icon-btn"><span>share</span></button>
+                        <button class="icon-btn"><span>📸</span></button>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button class="btn-primary">VIEW WORK</button>
+                        <button class="btn-secondary">DOWNLOAD RESUME</button>
+                    </div>
                 </div>
 
-                <!-- Action Buttons -->
-                <div class="action-buttons">
-                    <button class="btn-primary">VIEW WORK</button>
-                    <button class="btn-secondary">DOWNLOAD RESUME</button>
+                <!-- Image Section -->
+                <div class="hero-image-container">
+                    <div class="image-overlay">
+                    <!-- Ensure you are using the new .png file -->
+                    <img src="/src/assets/img-profile.png" alt="JM Tanador" class="profile-img" />
+                    <div class="status-tag">
+                        > status: available_for_hire
+                    </div>
+                    </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- Image Section -->
-            <div class="hero-image-container">
-                <div class="image-overlay">
-                <!-- Ensure you are using the new .png file -->
-                <img src="/src/assets/img-profile.png" alt="JM Tanador" class="profile-img" />
-                <div class="status-tag">
-                    > status: available_for_hire
+            <!-- ABOUT SECTION -->
+            <section id="about" class="about-section">
+                <div class="about-container">
+                    <!-- Left Side: Full Body Image -->
+                    <div class="about-image-wrapper">
+                        <img src="/src/assets/img-fullbody.png" alt="JM Tanador Full Body" class="about-full-img" />
+                    </div>
+                    <!-- Right Side: Content -->
+                    <div class="about-text-content">
+                        <h2 class="section-title">ABOUT ME</h2>
+                        <span class="about-subtitle">HI, I'M A PASSIONATE DEVELOPER.</span>
+                        <p class="about-description">
+                            With two years of professional experience as a Full Stack Web Developer in the private sector, 
+                            I focus on creating scalable, data‑driven applications that deliver both performance and usability. 
+                            I bring a strong foundation in core web development principles and apply them to build responsive, 
+                            user‑friendly solutions backed by efficient, secure systems.
+
+                            Beyond development, I manage the full lifecycle of a project from initial build to deployment and 
+                            long‑term maintenance. I ensure systems are properly configured, tested, and deployed into production 
+                            environments, while continuously monitoring performance and reliability.
+                        </p>
+
+                        <div class="tech-stack">
+                            <span class="tech-stack-title">TECH STACK</span>
+                            <div class="tech-grid">
+                                <!-- HTML -->
+                                <div class="tech-item">
+                                    <span class="tech-icon-text">HTML</span>
+                                    <span class="label">HTML5</span>
+                                </div>
+                                <!-- Javascript -->
+                                <div class="tech-item">
+                                    <span class="tech-icon-text">JS</span>
+                                    <span class="label">JavaScript</span>
+                                </div>
+                                <!-- CSS -->
+                                <div class="tech-item">
+                                    <span class="tech-icon-text">CSS</span>
+                                    <span class="label">CSS3</span>
+                                </div>
+                                <!-- PHP -->
+                                <div class="tech-item">
+                                    <span class="tech-icon-text">PHP</span>
+                                    <span class="label">PHP</span>
+                                </div>
+                                <!-- Vue js -->
+                                <div class="tech-item">
+                                    <span class="tech-icon-text">VUE</span>
+                                    <span class="label">Vue.js</span>
+                                </div>
+                                <!-- Laravel -->
+                                <div class="tech-item">
+                                    <span class="tech-icon-text">LVL</span>
+                                    <span class="label">Laravel</span>
+                                </div>
+                                <!-- MySQL -->
+                                <div class="tech-item">
+                                    <span class="tech-icon-text">SQL</span>
+                                    <span class="label">MySQL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
                 </div>
-                </div>
-            </div>
+            </section>
+
+            <!-- PROJECTS SECTION -->
+            <section>
+
+            </section>
+
+            <!-- CONTACT SECTION -->
+            <section>
+
+            </section>
         </main>
 
         <!-- Footer -->
@@ -124,7 +209,7 @@ export default {
 
 .portfolio-wrapper {
     min-height: 100vh;
-    background-color: #0a0a0a;
+    background-color: #010101;
     color: #ffffff;
     font-family: 'Inter', sans-serif;
     padding: 0 4rem;
@@ -326,7 +411,7 @@ export default {
         beyond the visible fade area */
     object-fit: cover; 
     
-    filter: grayscale(100%) contrast(95%);
+    /* filter: grayscale(100%) contrast(95%); */
 
     /* NEW MASK: Fades all edges (Top, Bottom, Left, Right) */
     -webkit-mask-image: radial-gradient(
@@ -353,6 +438,126 @@ export default {
   font-size: 0.8rem;
   border-left: 2px solid #555;
   z-index: 10;
+}
+
+/* About Section Layout */
+.about-section {
+    padding: 8rem 0;
+    border-top: 1px solid #1a1a1a;
+}
+
+.about-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 4rem;
+}
+
+.about-text-content {
+    flex: 1.2;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    letter-spacing: -1px;
+}
+
+.about-subtitle {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+.about-description {
+    color: #aaa;
+    line-height: 1.8;
+    font-size: 1 rem;
+    max-width: 600px;
+    margin-bottom: 3rem;
+}
+
+/* Tech Stack Grid */
+.tech-stack {
+    margin-top: 3rem;
+}
+
+.tech-stack-title {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: #666;
+    letter-spacing: 3px;
+    margin-bottom: 1.5rem;
+}
+
+.tech-grid {
+    display: grid;
+    /* This creates 4 columns. On 7 items, the bottom row will have 3. */
+    grid-template-columns: repeat(4, 110px); 
+    gap: 15px;
+}
+
+.tech-item {
+    width: 110px;
+    height: 110px;
+    border: 1px solid #222; /* Dark border to match screenshot */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.tech-item:hover {
+    border-color: #555;
+    background: #0f0f0f;
+}
+
+.tech-icon-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #eee;
+    margin-bottom: 8px;
+}
+
+.label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: #555;
+    text-transform: uppercase;
+}
+
+/* About Image (Full Body Zoom Out) */
+.about-image-wrapper {
+    flex: 1;
+    height: 800px; /* Taller container for full body look */
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.about-full-img {
+    width: 100%; /* Changed from 130% to avoid edge clipping */
+    height: 100%;
+    object-fit: contain;
+    
+    /* We increase the transition area from 5% to 50% for a "smoke" effect */
+    -webkit-mask-image: radial-gradient(
+        circle at center, 
+        black 70%, 
+        transparent 80%
+    );
+    mask-image: radial-gradient(
+        circle at center, 
+        black 70%, 
+        transparent 80%
+    );
 }
 
 /* Footer */
@@ -435,10 +640,10 @@ export default {
     aspect-ratio: 1 / 1;    /* Keeps it square */
   }
 
-  .profile-img {
+  /* .profile-img {
     width: 100%;
     height: auto;
-  }
+  } */
 
   /* 6. Buttons and Icons */
   .action-buttons {
@@ -481,5 +686,28 @@ export default {
     height: 280px !important;
     margin: 0 auto; /* Keep it centered */
   }
+
+  .about-container {
+        flex-direction: column;
+    }
+
+    .about-image-wrapper {
+        order: -1; /* Image first on mobile */
+        height: 400px;
+        width: 100%;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+    }
+    .tech-item {
+        width: 100%;
+        height: 100px;
+    }
 }
 </style>
