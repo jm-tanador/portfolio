@@ -25,10 +25,10 @@
                     <p class="description">Work > Sleep.</p>
 
                     <div class="social-icons">
-                        <button class="icon-btn"><span>🔗</span></button>
-                        <button class="icon-btn"><span>&lt;/&gt;</span></button>
-                        <button class="icon-btn"><span>share</span></button>
-                        <button class="icon-btn"><span>📸</span></button>
+                        <button class="icon-btn"><i class="mdi mdi-link-variant"></i></button>
+                        <button class="icon-btn"><i class="mdi mdi-code-tags"></i></button>
+                        <button class="icon-btn"><i class="mdi mdi-share-variant"></i></button>
+                        <button class="icon-btn"><i class="mdi mdi-camera"></i></button>
                     </div>
 
                     <div class="action-buttons">
