@@ -56,14 +56,15 @@
                         <h2 class="section-title">ABOUT ME</h2>
                         <span class="about-subtitle">HI, I'M A PASSIONATE DEVELOPER.</span>
                         <p class="about-description">
-                            With two years of professional experience as a Full Stack Web Developer in the private sector, 
-                            I focus on creating scalable, data‑driven applications that deliver both performance and usability. 
-                            I bring a strong foundation in core web development principles and apply them to build responsive, 
-                            user‑friendly solutions backed by efficient, secure systems.
-
-                            Beyond development, I manage the full lifecycle of a project from initial build to deployment and 
-                            long‑term maintenance. I ensure systems are properly configured, tested, and deployed into production 
-                            environments, while continuously monitoring performance and reliability.
+                            I began my programming journey in 2023, building foundational web projects using HTML, 
+                            CSS, and JavaScript. My professional career took off in 2025 when I joined a private firm 
+                            as a Fullstack Web Developer, where I specialized in Vue.js and Laravel. Over the following 
+                            years, I transitioned into collaborative team environments, mastering version control with 
+                            GitLab and deepening my expertise in database management.
+                        </p>
+                        <p class="about-description">
+                            With over two years of professional experience in full-stack development, I remain committed 
+                            to evolving my tech stack and delivering high-quality, scalable web applications.
                         </p>
                         <div class="tech-stack">
                             <span class="tech-stack-title">TECH STACK</span>
@@ -84,8 +85,8 @@
                 <div class="project-grid">
                     <div class="project-card" v-for="i in 3" :key="i">
                         <div class="project-img-placeholder">Project Image {{i}}</div>
-                        <h3>Project Name {{i}}</h3>
-                        <p>A brief description of the tech stack and the problem solved.</p>
+                        <h3>Test {{i}}</h3>
+                        <p>Test.</p>
                     </div>
                 </div>
             </section>
@@ -95,7 +96,7 @@
                 <h2 class="section-title">GET IN TOUCH</h2>
                 <div class="contact-container">
                     <p>Have a project in mind? Let's build something amazing together.</p>
-                    <a href="mailto:your@email.com" class="email-link">jmtanador@email.com</a>
+                    <a href="mailto:your@email.com" class="email-link">jmtanador@gmail.com</a>
                 </div>
             </section>
         </main>
@@ -289,7 +290,7 @@ body {
 
 .nav-links li.active, .nav-links li:hover {
     color: #fff;
-    text-decoration: underline;
+    /* text-decoration: underline; */
     text-underline-offset: 4px;
 }
 
@@ -476,7 +477,7 @@ body {
 
 /* About Section Layout */
 .about-section {
-    padding: 8rem 0;
+    padding: 5rem 0;
     border-top: 1px solid #1a1a1a;
 }
 
@@ -509,9 +510,9 @@ body {
 .about-description {
     color: #aaa;
     line-height: 1.8;
-    font-size: 1 rem;
+    font-size: 14px;
     max-width: 600px;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
 }
 
 /* Tech Stack Grid */
