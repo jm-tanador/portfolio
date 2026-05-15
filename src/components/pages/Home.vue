@@ -10,8 +10,23 @@
                 <li><a href="#projects" class="nav-link" :class="{ active: activeSection == 'projects' }">Projects</a></li>
                 <li><a href="#contact" class="nav-link" :class="{ active: activeSection == 'contact' }">Contact</a></li>
             </ul>
-            <button class="cta-talk">LET'S TALK</button>
+            <button class="cta-talk" @click="openTalkDia()">LET'S TALK</button>
         </nav>
+
+        <v-dialog v-model="talkDia">
+            <div class="d-flex justify-center">
+                <v-card color="surface-variant" height="500px" width="500px" class="pa-5">
+                    <div>
+                        <v-text-field placeholder="example@email.com" variant="solo" density="comfortable"></v-text-field>
+                        <span>Message</span>
+                        <v-textarea placeholder="Input message here..." variant="solo" density="comfortable"></v-textarea>
+                    </div>
+                    <v-card-action>
+                        <v-btn>submit</v-btn>
+                    </v-card-action>
+                </v-card>
+            </div>
+        </v-dialog>
 
         <!-- Main Content -->
         <main>
@@ -28,7 +43,7 @@
                         <button class="icon-btn"><i class="mdi mdi-link-variant"></i></button>
                         <button class="icon-btn"><i class="mdi mdi-code-tags"></i></button>
                         <button class="icon-btn"><i class="mdi mdi-share-variant"></i></button>
-                        <button class="icon-btn"><i class="mdi mdi-camera"></i></button>
+                        <!-- <button class="icon-btn"><i class="mdi mdi-camera"></i></button> -->
                     </div>
 
                     <div class="action-buttons">
@@ -139,7 +154,8 @@ export default {
                 { title: 'Git', icon: 'mdi-git', color: '#F05032' },
                 { title: 'GitHub', icon: 'mdi-github', color: '#F05032' },
                 { title: 'GitLab', icon: 'mdi-gitlab', color: '#F05032' },
-            ]
+            ],
+            talkDia: false
         };
     },
     methods: {
@@ -165,7 +181,6 @@ export default {
             }
             setTimeout(this.handleTyping, this.typeSpeed);
         },
-
         handleScroll() {
             // 1. Navbar Glass Effect Logic
             this.isScrolled = window.scrollY > 50;
@@ -184,6 +199,9 @@ export default {
                     }
                 }
             });
+        },
+        openTalkDia(){
+            this.talkDia = true
         }
     },
     mounted() {
