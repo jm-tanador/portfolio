@@ -2,7 +2,7 @@
     <div class="portfolio-wrapper">
         <!-- Navigation -->
         <nav class="navbar" :class="{ 'navbar-scrolled': isScrolled }">
-            <div class="logo">Developer X.</div>
+            <div class="logo">jmtanador.</div>
             <ul class="nav-links">
                 <!-- activeSection is now dynamic -->
                 <li><a href="#home" class="nav-link" :class="{ active: activeSection == 'home' }">Home</a></li>
@@ -25,10 +25,11 @@
                         <label>YOUR NAME</label>
                         <v-text-field 
                             v-model="contactForm.name" 
-                            placeholder="John Doe" 
+                            placeholder="Juan Dela Cruz" 
                             variant="outlined" 
                             density="comfortable" 
                             :rules="[v => !!v || 'Name is required']"
+                            autocomplete="off"
                         ></v-text-field>
                     </div>
 
@@ -40,6 +41,7 @@
                             variant="outlined" 
                             density="comfortable"
                             :rules="[v => !!v || 'Email is required', v => /.+@.+\..+/.test(v) || 'E-mail must be valid']"
+                            autocomplete="off"
                         ></v-text-field>
                     </div>
 
@@ -52,6 +54,7 @@
                             density="comfortable"
                             auto-grow
                             :rules="[v => !!v || 'Message is required']"
+                            autocomplete="off"
                         ></v-textarea>
                     </div>
 
@@ -133,6 +136,7 @@
                                     <i class="mdi" :class="item.icon" :style="{ color: item.color }"></i>
                                     <span class="label">{{ item.title }}</span>
                                 </div>
+                                <span>...and more</span>
                             </div>
                         </div>
                     </div>
@@ -169,7 +173,7 @@
             <div class="footer-links">
                 <a href="#">GitHub</a>
                 <a href="#">LinkedIn</a>
-                <a href="#">Twitter</a>
+                <a href="#">X</a>
             </div>
         </footer>
     </div>
@@ -198,9 +202,9 @@ export default {
                 { title: 'Laravel', icon: 'mdi-laravel', color: '#FF2D20' },
                 { title: 'MySQL', icon: 'mdi-database', color: '#4479A1' },
                 { title: 'Git', icon: 'mdi-git', color: '#F05032' },
-                { title: 'GitHub', icon: 'mdi-github', color: '#F05032' },
+                { title: 'GitHub', icon: 'mdi-github', color: 'white' },
                 { title: 'GitLab', icon: 'mdi-gitlab', color: '#F05032' },
-                { title: 'Vercel', icon: 'mdi-triangle', color: '#F05032' },
+                { title: 'Vercel', icon: 'mdi-triangle', color: 'white' },
             ],
             talkDia: false,
             talkDia: false,
@@ -275,7 +279,7 @@ export default {
                 from_name: this.contactForm.name,
                 from_email: this.contactForm.email,
                 message: this.contactForm.message,
-                to_email: 'jmtanador@gmail.com'
+                // to_email: this.contactForm.email
             };
 
             emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
@@ -691,7 +695,7 @@ body {
     display: block;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.8rem;
-    color: #666;
+    /* color: #666; */
     letter-spacing: 3px;
     margin-bottom: 1.5rem;
 }
@@ -701,6 +705,13 @@ body {
     /* This creates 4 columns. On 7 items, the bottom row will have 3. */
     grid-template-columns: repeat(4, 110px); 
     gap: 15px;
+}
+
+.tech-grid span{
+    width: 150px;
+    margin-top: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
 }
 
 /* Target the icon specifically */
@@ -724,9 +735,9 @@ body {
 }
 
 /* Optional: If you want the icon to be gray by default and colored on hover */
-.tech-item i.mdi {
-    color: #444 !important; /* Overrides the inline style color */
-}
+/* .tech-item i.mdi {
+    color: #444 !important;
+} */
 
 .tech-item:hover i.mdi {
     color: inherit !important; /* Returns to the color defined in your data */
@@ -995,6 +1006,12 @@ body {
         text-decoration: none;
         margin-top: 2rem;
         display: inline-block;
+    }
+
+    .dialog-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        letter-spacing: 1px;
     }
 }
 </style>
