@@ -10,23 +10,68 @@
                 <li><a href="#projects" class="nav-link" :class="{ active: activeSection == 'projects' }">Projects</a></li>
                 <li><a href="#contact" class="nav-link" :class="{ active: activeSection == 'contact' }">Contact</a></li>
             </ul>
-            <button class="cta-talk" @click="openTalkDia()">LET'S TALK</button>
+            <button class="cta-talk" @click="talkDia = true">LET'S TALK</button>
         </nav>
 
-        <v-dialog v-model="talkDia">
-            <div class="d-flex justify-center">
-                <v-card color="surface-variant" height="500px" width="500px" class="pa-5">
-                    <div>
-                        <v-text-field placeholder="example@email.com" variant="solo" density="comfortable"></v-text-field>
-                        <span>Message</span>
-                        <v-textarea placeholder="Input message here..." variant="solo" density="comfortable"></v-textarea>
+        <v-dialog v-model="talkDia" max-width="500px" persistent>
+            <v-card class="contact-dialog-card pa-8">
+                <div class="d-flex justify-space-between align-center mb-6">
+                    <h2 class="dialog-title">LET'S CONNECT</h2>
+                    <v-btn icon="mdi-close" variant="text" @click="talkDia = false" color="grey"></v-btn>
+                </div>
+
+                <v-form ref="form" v-model="isFormValid">
+                    <div class="input-group">
+                        <label>YOUR NAME</label>
+                        <v-text-field 
+                            v-model="contactForm.name" 
+                            placeholder="John Doe" 
+                            variant="outlined" 
+                            density="comfortable" 
+                            :rules="[v => !!v || 'Name is required']"
+                        ></v-text-field>
                     </div>
-                    <v-card-action>
-                        <v-btn>submit</v-btn>
-                    </v-card-action>
-                </v-card>
-            </div>
+
+                    <div class="input-group">
+                        <label>EMAIL ADDRESS</label>
+                        <v-text-field 
+                            v-model="contactForm.email" 
+                            placeholder="example@email.com" 
+                            variant="outlined" 
+                            density="comfortable"
+                            :rules="[v => !!v || 'Email is required', v => /.+@.+\..+/.test(v) || 'E-mail must be valid']"
+                        ></v-text-field>
+                    </div>
+
+                    <div class="input-group">
+                        <label>MESSAGE</label>
+                        <v-textarea 
+                            v-model="contactForm.message" 
+                            placeholder="How can I help you?" 
+                            variant="outlined" 
+                            density="comfortable"
+                            auto-grow
+                            :rules="[v => !!v || 'Message is required']"
+                        ></v-textarea>
+                    </div>
+
+                    <v-btn 
+                        block 
+                        class="submit-btn mt-4" 
+                        height="50" 
+                        :loading="loading" 
+                        @click="sendEmail"
+                    >
+                        SEND MESSAGE
+                    </v-btn>
+                </v-form>
+            </v-card>
         </v-dialog>
+
+        <!-- Success/Error Notification -->
+        <v-snackbar v-model="snackbar.show" :color="snackbar.color" timeout="3000">
+            {{ snackbar.text }}
+        </v-snackbar>
 
         <!-- Main Content -->
         <main>
@@ -69,7 +114,7 @@
                     </div>
                     <div class="about-text-content">
                         <h2 class="section-title">ABOUT ME</h2>
-                        <span class="about-subtitle">HI, I'M A PASSIONATE DEVELOPER.</span>
+                        <!-- <span class="about-subtitle">HI, I'M A PASSIONATE DEVELOPER.</span> -->
                         <p class="about-description">
                             I began my programming journey in 2023, building foundational web projects using HTML, 
                             CSS, and JavaScript. My professional career took off in 2025 when I joined a private firm 
@@ -131,6 +176,7 @@
 </template>
 
 <script>
+import emailjs from '@emailjs/browser';
 export default {
     name: 'PortfolioHome',
     data() {
@@ -154,8 +200,22 @@ export default {
                 { title: 'Git', icon: 'mdi-git', color: '#F05032' },
                 { title: 'GitHub', icon: 'mdi-github', color: '#F05032' },
                 { title: 'GitLab', icon: 'mdi-gitlab', color: '#F05032' },
+                { title: 'Vercel', icon: 'mdi-triangle', color: '#F05032' },
             ],
-            talkDia: false
+            talkDia: false,
+            talkDia: false,
+            loading: false,
+            isFormValid: false,
+            contactForm: {
+                name: '',
+                email: '',
+                message: ''
+            },
+            snackbar: {
+                show: false,
+                text: '',
+                color: 'success'
+            }
         };
     },
     methods: {
@@ -200,8 +260,48 @@ export default {
                 }
             });
         },
-        openTalkDia(){
-            this.talkDia = true
+        async sendEmail() {
+            const { valid } = await this.$refs.form.validate();
+            if (!valid) return;
+
+            this.loading = true;
+
+            // Replace these strings with your actual EmailJS IDs
+            const SERVICE_ID = "service_lzvjzyf";
+            const TEMPLATE_ID = "template_m7pzg2b";
+            const PUBLIC_KEY = "QjlI05tKxFJeLdrtr";
+
+            const templateParams = {
+                from_name: this.contactForm.name,
+                from_email: this.contactForm.email,
+                message: this.contactForm.message,
+                to_email: 'jmtanador@gmail.com'
+            };
+
+            emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
+                .then(() => {
+                    this.snackbar = {
+                        show: true,
+                        text: "Message sent successfully!",
+                        color: "success"
+                    };
+                    this.talkDia = false;
+                    this.resetForm();
+                })
+                .catch((error) => {
+                    console.error('FAILED...', error);
+                    this.snackbar = {
+                        show: true,
+                        text: "Failed to send message. Please try again.",
+                        color: "error"
+                    };
+                })
+                .finally(() => {
+                    this.loading = false;
+                });
+        },
+        resetForm() {
+            this.contactForm = { name: '', email: '', message: '' };
         }
     },
     mounted() {
@@ -491,6 +591,55 @@ body {
     font-size: 0.8rem;
     border-left: 2px solid #555;
     z-index: 10;
+}
+
+/* Custom Dialog Styling */
+.contact-dialog-card {
+    background-color: #111 !important;
+    border: 1px solid #333;
+    color: white !important;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.dialog-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.7rem;
+    color: #888;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+}
+
+/* Overriding Vuetify styles to match your theme */
+:deep(.v-field) {
+    border-radius: 0 !important;
+    background: #050505 !important;
+}
+
+:deep(.v-field__outline) {
+    --v-field-border-opacity: 1;
+    color: #333 !important;
+}
+
+:deep(.v-field--focused .v-field__outline) {
+    color: #fff !important;
+}
+
+.submit-btn {
+    background-color: white !important;
+    color: black !important;
+    font-weight: bold;
+    border-radius: 0;
+    letter-spacing: 2px;
 }
 
 /* About Section Layout */
