@@ -3,6 +3,7 @@
         <!-- Navigation -->
         <nav class="navbar" :class="{ 'navbar-scrolled': isScrolled }">
             <div class="logo">jmtanador.</div>
+            <div class="logo"><i class="mdi mdi-alert"></i>On going!</div>
             <ul class="nav-links">
 
                 <li><a href="#home" class="nav-link" :class="{ active: activeSection == 'home' }">Home</a></li>
@@ -178,14 +179,14 @@
 </template>
 
 <script>
-import emailjs from '@emailjs/browser';
+import emailjs from '@emailjs/browser'; 
 export default {
     name: 'PortfolioHome',
     data() {
         return {
             activeSection: 'home',
             isScrolled: false,
-            titles: ["I'm JM Tanador", "I'm a Fullstack Web Developer", "I'm a Creator"],
+            titles: ["Hello, World!", "I'm JM Tanador", "I Develop.", "I Design.", "I Deploy.", "I Create.", "git commit -m 'Success'"],
             displayedText: "",
             titleIndex: 0,
             charIndex: 0,
@@ -201,7 +202,7 @@ export default {
                 { title: 'GitHub', icon: 'mdi-github', color: 'white' },
                 { title: 'GitLab', icon: 'mdi-gitlab', color: '#F05032' },
                 { title: 'Vercel', icon: 'mdi-triangle', color: 'white' },
-                { title: 'Soon', icon: 'mdi-lock', color: 'white' },
+                { title: 'Konva.js', icon: 'mdi-alpha-k-circle', color: '#1083cc' },
                 { title: 'Soon', icon: 'mdi-lock', color: 'white' },
                 { title: 'Soon', icon: 'mdi-lock', color: 'white' },
             ],
