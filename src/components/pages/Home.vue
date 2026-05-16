@@ -78,7 +78,7 @@
 
         <!-- Main Content -->
         <main>
-            <!-- Hero Section (Fixed height to 100vh) -->
+            <!-- HOME SECTION -->
             <section id="home" class="hero">
                 <div class="hero-content">
                     <span class="greeting">HI, THERE!</span>
@@ -160,7 +160,7 @@
                 <h2 class="section-title">GET IN TOUCH</h2>
                 <div class="contact-container">
                     <p>Have a project in mind? Let's build something amazing together.</p>
-                    <a href="mailto:your@email.com" class="email-link">jmtanador@gmail.com</a>
+                    <a @click="talkDia = true" href="mailto:jmtanador@gmail.com" class="email-link">jmtanador@gmail.com</a>
                 </div>
             </section>
         </main>
@@ -171,9 +171,9 @@
                 Copyright © 2026 — Made by JM Tanador
             </div>
             <div class="footer-links">
-                <a href="#">GitHub</a>
-                <a href="#">LinkedIn</a>
-                <a href="#">X</a>
+                <a target="blank" href="https://github.com/jm-tanador">GitHub</a>
+                <a target="blank" href="https://www.linkedin.com/in/jmtanador/">LinkedIn</a>
+                <a target="blank" href="https://media.newyorker.com/photos/59095bb86552fa0be682d9d0/master/pass/Monkey-Selfie.jpg">X</a>
             </div>
         </footer>
     </div>
@@ -186,7 +186,7 @@ export default {
     data() {
         return {
             activeSection: 'home',
-            isScrolled: false, // For navbar glass effect
+            isScrolled: false,
             titles: ["I'm JM Tanador", "I'm a Fullstack Web Developer", "I'm a Creator"],
             displayedText: "",
             titleIndex: 0,
@@ -210,11 +210,7 @@ export default {
             talkDia: false,
             loading: false,
             isFormValid: false,
-            contactForm: {
-                name: '',
-                email: '',
-                message: ''
-            },
+            contactForm: {},
             snackbar: {
                 show: false,
                 text: '',
@@ -246,12 +242,10 @@ export default {
             setTimeout(this.handleTyping, this.typeSpeed);
         },
         handleScroll() {
-            // 1. Navbar Glass Effect Logic
             this.isScrolled = window.scrollY > 50;
 
-            // 2. Active Section Highlighting Logic
             const sections = ['home', 'about', 'projects', 'contact'];
-            const scrollPosition = window.scrollY + 150; // Offset for better detection
+            const scrollPosition = window.scrollY + 150;
 
             sections.forEach((id) => {
                 const element = document.getElementById(id);
@@ -305,7 +299,7 @@ export default {
                 });
         },
         resetForm() {
-            this.contactForm = { name: '', email: '', message: '' };
+            this.contactForm = {};
         }
     },
     mounted() {
