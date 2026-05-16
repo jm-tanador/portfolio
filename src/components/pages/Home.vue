@@ -159,7 +159,7 @@
                 <h2 class="section-title">GET IN TOUCH</h2>
                 <div class="contact-container">
                     <p>Have a project in mind? Let's build something amazing together.</p>
-                    <a @click="talkDia = true" href="mailto:jmtanador@gmail.com" class="email-link">jmtanador@gmail.com</a>
+                    <a @click="talkDia = true" style="cursor:pointer" class="email-link">jmtanador@gmail.com</a>
                 </div>
             </section>
         </main>
