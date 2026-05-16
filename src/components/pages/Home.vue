@@ -4,7 +4,7 @@
         <nav class="navbar" :class="{ 'navbar-scrolled': isScrolled }">
             <div class="logo">jmtanador.</div>
             <ul class="nav-links">
-                <!-- activeSection is now dynamic -->
+
                 <li><a href="#home" class="nav-link" :class="{ active: activeSection == 'home' }">Home</a></li>
                 <li><a href="#about" class="nav-link" :class="{ active: activeSection == 'about' }">About</a></li>
                 <li><a href="#projects" class="nav-link" :class="{ active: activeSection == 'projects' }">Projects</a></li>
@@ -76,7 +76,7 @@
             {{ snackbar.text }}
         </v-snackbar>
 
-        <!-- Main Content -->
+
         <main>
             <!-- HOME SECTION -->
             <section id="home" class="hero">
@@ -91,7 +91,6 @@
                         <button class="icon-btn"><i class="mdi mdi-link-variant"></i></button>
                         <button class="icon-btn"><i class="mdi mdi-code-tags"></i></button>
                         <button class="icon-btn"><i class="mdi mdi-share-variant"></i></button>
-                        <!-- <button class="icon-btn"><i class="mdi mdi-camera"></i></button> -->
                     </div>
 
                     <div class="action-buttons">
@@ -117,7 +116,6 @@
                     </div>
                     <div class="about-text-content">
                         <h2 class="section-title">ABOUT ME</h2>
-                        <!-- <span class="about-subtitle">HI, I'M A PASSIONATE DEVELOPER.</span> -->
                         <p class="about-description">
                             I began my programming journey in 2023, building foundational web projects using HTML, 
                             CSS, and JavaScript. My professional career took off in 2025 when I joined a private firm 
@@ -136,7 +134,7 @@
                                     <i class="mdi" :class="item.icon" :style="{ color: item.color }"></i>
                                     <span class="label">{{ item.title }}</span>
                                 </div>
-                                <span>...and more</span>
+                                <!-- <span>...and more</span> -->
                             </div>
                         </div>
                     </div>
@@ -168,7 +166,7 @@
         <!-- Footer -->
         <footer class="footer">
             <div class="copyright">
-                Copyright © 2026 — Made by JM Tanador
+                JM Tanador © 2026
             </div>
             <div class="footer-links">
                 <a target="blank" href="https://github.com/jm-tanador">GitHub</a>
@@ -194,9 +192,7 @@ export default {
             isDeleting: false,
             typeSpeed: 150,
             techStack: [
-                // { title: 'HTML', icon: 'mdi-language-html5', color: '#E34F26' },
                 { title: 'Javascript', icon: 'mdi-language-javascript', color: '#F7DF1E' },
-                // { title: 'CSS', icon: 'mdi-language-css3', color: '#1572B6' },
                 { title: 'PHP', icon: 'mdi-language-php', color: '#777BB4' },
                 { title: 'Vue.js', icon: 'mdi-vuejs', color: '#4FC08D' },
                 { title: 'Laravel', icon: 'mdi-laravel', color: '#FF2D20' },
@@ -205,6 +201,9 @@ export default {
                 { title: 'GitHub', icon: 'mdi-github', color: 'white' },
                 { title: 'GitLab', icon: 'mdi-gitlab', color: '#F05032' },
                 { title: 'Vercel', icon: 'mdi-triangle', color: 'white' },
+                { title: 'Soon', icon: 'mdi-lock', color: 'white' },
+                { title: 'Soon', icon: 'mdi-lock', color: 'white' },
+                { title: 'Soon', icon: 'mdi-lock', color: 'white' },
             ],
             talkDia: false,
             talkDia: false,
@@ -264,7 +263,6 @@ export default {
 
             this.loading = true;
 
-            // Replace these strings with your actual EmailJS IDs
             const SERVICE_ID = "service_lzvjzyf";
             const TEMPLATE_ID = "template_m7pzg2b";
             const PUBLIC_KEY = "QjlI05tKxFJeLdrtr";
@@ -273,7 +271,6 @@ export default {
                 from_name: this.contactForm.name,
                 from_email: this.contactForm.email,
                 message: this.contactForm.message,
-                // to_email: this.contactForm.email
             };
 
             emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
@@ -313,7 +310,6 @@ export default {
 </script>
 
 <style scoped>
-/* Importing Google Fonts to match the look */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=JetBrains+Mono&family=Playfair+Display:wght@700&display=swap');
 /* @import url('https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css'); */
 
@@ -326,22 +322,18 @@ export default {
     display: flex;
     flex-direction: column;
     
-    /* Grid Background Effect */
     background-image: 
         linear-gradient(to right, #1a1a1a 1px, transparent 1px),
         linear-gradient(to bottom, #1a1a1a 1px, transparent 1px);
     background-size: 50px 50px;
 }
 
-/* Ensure the page scrolls smoothly */
 html {
     scroll-behavior: smooth;
-    /* This prevents the fixed navbar from covering your section titles */
     scroll-padding-top: 80px; 
 }
 
 /* Navbar */
-/* Navbar Base (Transparent initially) */
 .navbar {
     position: fixed;
     top: 0;
@@ -350,15 +342,15 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 4rem; /* Match your page padding */
+    padding: 2rem 4rem; 
     z-index: 1000;
-    transition: all 0.4s ease; /* Smooth transition for background */
+    transition: all 0.4s ease; 
     background: transparent;
     border-bottom: 1px solid transparent;
     box-sizing: border-box;
 }
 
-/* Navbar Scrolled State (Glass Effect) */
+/* Navbar Scrolled State */
 .navbar-scrolled {
     padding: 1rem 4rem;
     background: rgba(1, 1, 1, 0.7);
@@ -380,7 +372,6 @@ html {
     font-size: 0.9rem;
 }
 
-/* Style the anchor tags inside LI */
 .nav-links a {
     text-decoration: none;
     color: #888;
@@ -393,7 +384,6 @@ html {
     text-underline-offset: 8px;
 }
 
-/* Offset the top of the page so content doesn't hide behind navbar */
 body {
     padding-top: 80px; 
 }
@@ -406,7 +396,6 @@ body {
 
 .nav-links li.active, .nav-links li:hover {
     color: #fff;
-    /* text-decoration: underline; */
     text-underline-offset: 4px;
 }
 
@@ -420,17 +409,17 @@ body {
     cursor: pointer;
 }
 
-/* Hero Section */
+/* Home Section */
 .hero {
-    min-height: 100vh; /* Force home to take full screen height */
+    min-height: 100vh; 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 80px; /* Space for fixed navbar */
+    padding-top: 80px; 
 }
 
 .hero-content {
-    max-width: 800px; /* Increased from 500px */
+    max-width: 800px; 
     width: 100%;
 }
 
@@ -446,12 +435,7 @@ body {
     font-size: 4.5rem;
     margin: 1rem 0;
     line-height: 1.1;
-    
-    /* REMOVE THIS: width: 700px; */
-    
-    /* ADD THESE: */
-    width: 100%;          /* Take full width of the parent */
-    /* text-align: center;   Center the text inside the box */
+    width: 100%;
     display: block;       
 }
 
@@ -522,7 +506,7 @@ body {
     font-size: 4.5rem;
     margin: 1rem 0;
     line-height: 1.1;
-    min-height: 1.2em; /* Prevents layout jump before text starts typing */
+    min-height: 1.2em;
 }
 
 .cursor {
@@ -549,22 +533,16 @@ body {
     position: relative;
     width: 450px;
     height: 450px;
-    /* REMOVE background: #111; so the grid shows through */
     background: transparent; 
     display: flex;
-    align-items: flex-end; /* Keeps you at the bottom of the container */
+    align-items: flex-end;
 }
 
 .profile-img {
     width: 100%;
     height: 100%;
-    /* Change to cover to ensure the image edges are pushed 
-        beyond the visible fade area */
     object-fit: cover; 
     
-    /* filter: grayscale(100%) contrast(95%); */
-
-    /* NEW MASK: Fades all edges (Top, Bottom, Left, Right) */
     -webkit-mask-image: radial-gradient(
         ellipse at center, 
         black 15%, 
@@ -577,13 +555,12 @@ body {
     );
 }
 
-/* Ensure the status tag still looks good */
 .status-tag {
     position: absolute;
     bottom: 20px;
     right: 0;
-    background: rgba(20, 20, 20, 0.8); /* Slightly darker for readability */
-    backdrop-filter: blur(5px); /* Makes the grid look blurry behind the tag */
+    background: rgba(20, 20, 20, 0.8); 
+    backdrop-filter: blur(5px); 
     padding: 10px 20px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.8rem;
@@ -591,7 +568,6 @@ body {
     z-index: 10;
 }
 
-/* Custom Dialog Styling */
 .contact-dialog-card {
     background-color: #111 !important;
     border: 1px solid #333;
@@ -617,7 +593,6 @@ body {
     letter-spacing: 2px;
 }
 
-/* Overriding Vuetify styles to match your theme */
 :deep(.v-field) {
     border-radius: 0 !important;
     background: #050505 !important;
@@ -689,14 +664,12 @@ body {
     display: block;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.8rem;
-    /* color: #666; */
     letter-spacing: 3px;
     margin-bottom: 1.5rem;
 }
 
 .tech-grid {
     display: grid;
-    /* This creates 4 columns. On 7 items, the bottom row will have 3. */
     grid-template-columns: repeat(4, 110px); 
     gap: 15px;
 }
@@ -708,19 +681,17 @@ body {
     font-size: 0.8rem;
 }
 
-/* Target the icon specifically */
 .tech-item i.mdi {
-    font-size: 2.5rem; /* Large and clear */
+    font-size: 2.5rem;
     margin-bottom: 10px;
     transition: transform 0.3s ease;
 }
 
-/* Add a hover effect to the icon */
+
 .tech-item:hover i.mdi {
-    transform: scale(1.2); /* Slight pop on hover */
+    transform: scale(1.2);
 }
 
-/* Keep your existing label style */
 .label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.65rem;
@@ -728,13 +699,8 @@ body {
     text-transform: uppercase;
 }
 
-/* Optional: If you want the icon to be gray by default and colored on hover */
-/* .tech-item i.mdi {
-    color: #444 !important;
-} */
-
 .tech-item:hover i.mdi {
-    color: inherit !important; /* Returns to the color defined in your data */
+    color: inherit !important; 
 }
 
 .tech-icon-text {
@@ -747,21 +713,20 @@ body {
 
 
 
-/* About Image (Full Body Zoom Out) */
+/* About Image */
 .about-image-wrapper {
     flex: 1;
-    height: 600px; /* Taller container for full body look */
+    height: 600px;
     display: flex;
     justify-content: center;
     overflow: hidden;
 }
 
 .about-full-img {
-    width: 100%; /* Changed from 130% to avoid edge clipping */
+    width: 100%; 
     height: 100%;
     object-fit: contain;
     
-    /* We increase the transition area from 5% to 50% for a "smoke" effect */
     -webkit-mask-image: radial-gradient(
         circle at center, 
         black 70%, 
@@ -844,13 +809,11 @@ body {
 
 /* Mobile Responsiveness */
 @media (max-width: 1024px) {
-    /* 1. Reduce the huge side padding so content has room to breathe */
     .portfolio-wrapper {
         padding: 0 1.5rem;
-        overflow-x: hidden; /* Safety net to prevent horizontal scroll */
+        overflow-x: hidden; 
     }
 
-    /* 2. Fix the Navbar squashing */
     .navbar {
         flex-direction: column;
         gap: 1.5rem;
@@ -884,7 +847,6 @@ body {
         scale: 1;
     }
 
-    /* 3. Stack the content and image vertically */
     .hero {
         flex-direction: column;
         text-align: center;
@@ -893,22 +855,20 @@ body {
     }
 
     .hero-content {
-        order: 2; /* Text goes below the image */
+        order: 2;
         max-width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    /* 4. Fix Title wrapping and size */
     .main-title {
-        font-size: 2.2rem !important; /* Smaller for mobile */
+        font-size: 2.2rem !important; 
         line-height: 1.2;
-        white-space: normal; /* Allow it to wrap naturally */
+        white-space: normal; 
         width: 100%;
     }
 
-    /* 5. CRITICAL FIX: The Image Width */
     .hero-image-container {
         order: 1;
         width: 100%;
@@ -916,28 +876,21 @@ body {
     }
 
     .image-overlay {
-        width: 100% !important; /* Forces it to fit the phone screen */
-        max-width: 300px;        /* Limits size so it doesn't get huge */
+        width: 100% !important; 
+        max-width: 300px;        
         height: auto;
-        aspect-ratio: 1 / 1;    /* Keeps it square */
+        aspect-ratio: 1 / 1;    
     }
 
-    /* .profile-img {
-        width: 100%;
-        height: auto;
-    } */
-
-    /* 6. Buttons and Icons */
     .action-buttons {
         flex-direction: column;
         width: 100%;
     }
     
     .btn-primary, .btn-secondary {
-        width: 100%; /* Full width buttons are easier to tap on mobile */
+        width: 100%; 
     }
 
-    /* 7. Footer Fix */
     .footer {
         flex-direction: column;
         gap: 1rem;
@@ -950,23 +903,17 @@ body {
     }
 
     .status-tag {
-        /* 1. Reduce the distance from the edges so it stays in the corner */
         bottom: -5px !important; 
-        right: 30px !important;  /* Slight negative value makes it pop like the original design */
-        
-        /* 2. Shrink the tag itself so it doesn't cover too much of the image */
+        right: 30px !important;  
         padding: 6px 12px !important;
         font-size: 0.7rem !important;
-        
-        /* 3. Ensure it stays on top of the image */
         z-index: 20;
     }
 
     .image-overlay {
-        /* Ensure the container is exactly the right size for the image */
         width: 280px !important; 
         height: 280px !important;
-        margin: 0 auto; /* Keep it centered */
+        margin: 0 auto; 
     }
 
     .about-container {
@@ -974,7 +921,7 @@ body {
     }
 
     .about-image-wrapper {
-        order: -1; /* Image first on mobile */
+        order: -1; 
         height: 400px;
         width: 100%;
     }
