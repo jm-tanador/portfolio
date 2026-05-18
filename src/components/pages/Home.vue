@@ -4,13 +4,14 @@
         <nav class="navbar" :class="{ 'navbar-scrolled': isScrolled }">
             <div class="logo">jmtanador.</div>
             <div class="logo"><i class="mdi mdi-alert"></i>On going!</div>
-            <ul class="nav-links">
+            <!-- Inside the <nav> -->
+                <ul class="nav-links">
+                    <li><a href="#" @click.prevent="scrollToSection('home')" :class="{ active: activeSection == 'home' }">Home</a></li>
+                    <li><a href="#" @click.prevent="scrollToSection('about')" :class="{ active: activeSection == 'about' }">About</a></li>
+                    <li><a href="#" @click.prevent="scrollToSection('projects')" :class="{ active: activeSection == 'projects' }">Projects</a></li>
+                    <li><a href="#" @click.prevent="scrollToSection('contact')" :class="{ active: activeSection == 'contact' }">Contact</a></li>
+                </ul>
 
-                <li><a href="#home" class="nav-link" :class="{ active: activeSection == 'home' }">Home</a></li>
-                <li><a href="#about" class="nav-link" :class="{ active: activeSection == 'about' }">About</a></li>
-                <li><a href="#projects" class="nav-link" :class="{ active: activeSection == 'projects' }">Projects</a></li>
-                <li><a href="#contact" class="nav-link" :class="{ active: activeSection == 'contact' }">Contact</a></li>
-            </ul>
             <button class="cta-talk" @click="talkDia = true">LET'S TALK</button>
         </nav>
 
@@ -95,7 +96,7 @@
                     </div>
 
                     <div class="action-buttons">
-                        <button class="btn-primary">VIEW WORK</button>
+                        <button class="btn-primary" @click="scrollToSection('projects')">VIEW WORK</button>
                         <button class="btn-secondary">DOWNLOAD RESUME</button>
                     </div>
                 </div>
@@ -180,6 +181,7 @@
 
 <script>
 import emailjs from '@emailjs/browser'; 
+import Lenis from '@studio-freight/lenis'
 export default {
     name: 'PortfolioHome',
     data() {
@@ -215,7 +217,8 @@ export default {
                 show: false,
                 text: '',
                 color: 'success'
-            }
+            },
+            lenis: null, 
         };
     },
     methods: {
@@ -244,20 +247,22 @@ export default {
         handleScroll() {
             this.isScrolled = window.scrollY > 50;
 
-            const sections = ['home', 'about', 'projects', 'contact'];
-            const scrollPosition = window.scrollY + 150;
+    const sections = ['home', 'about', 'projects', 'contact'];
+    // We use a slightly larger offset (200) for detection to 
+    // trigger the active state before the section hits the very top
+    const scrollPosition = window.scrollY + 200; 
 
-            sections.forEach((id) => {
-                const element = document.getElementById(id);
-                if (element) {
-                    const offsetTop = element.offsetTop;
-                    const offsetHeight = element.offsetHeight;
-                    if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-                        this.activeSection = id;
-                    }
-                }
-            });
-        },
+    sections.forEach((id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            const offsetTop = element.offsetTop;
+            const offsetHeight = element.offsetHeight;
+            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                this.activeSection = id;
+            }
+        }
+    });
+},
         async sendEmail() {
             const { valid } = await this.$refs.form.validate();
             if (!valid) return;
@@ -298,11 +303,41 @@ export default {
         },
         resetForm() {
             this.contactForm = {};
-        }
+        },
+        scrollToSection(id) {
+            if (this.lenis) {
+                // 'id' is the section ID, 'offset' is to avoid the navbar covering the title
+                this.lenis.scrollTo(`#${id}`, {
+                    offset: -80, 
+                    duration: 1.5, // How long the scroll takes (in seconds)
+                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Premium feeling ease
+                });
+            }
+        },
     },
     mounted() {
         this.handleTyping();
         window.addEventListener('scroll', this.handleScroll);
+
+        // Initialize Lenis
+        this.lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            orientation: 'vertical',
+            gestureOrientation: 'vertical',
+            smoothWheel: true,
+            wheelMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+            infinite: false,
+        })
+
+        // This loop is required for Lenis to work
+        const raf = (time) => {
+            this.lenis.raf(time)
+            requestAnimationFrame(raf)
+        }
+        requestAnimationFrame(raf)
     },
     beforeUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
@@ -313,6 +348,10 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=JetBrains+Mono&family=Playfair+Display:wght@700&display=swap');
 /* @import url('https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css'); */
+
+html {
+    scroll-padding-top: 90px; 
+}
 
 .portfolio-wrapper {
     min-height: 100vh;
@@ -327,11 +366,6 @@ export default {
         linear-gradient(to right, #1a1a1a 1px, transparent 1px),
         linear-gradient(to bottom, #1a1a1a 1px, transparent 1px);
     background-size: 50px 50px;
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 80px; 
 }
 
 /* Navbar */
@@ -618,7 +652,7 @@ body {
 
 /* About Section Layout */
 .about-section {
-    padding: 5rem 0;
+    /* padding: 0rem 0; */
     border-top: 1px solid #1a1a1a;
 }
 
