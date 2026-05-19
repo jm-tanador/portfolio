@@ -3,7 +3,9 @@
         <!-- Navigation -->
         <nav class="navbar" :class="{ 'navbar-scrolled': isScrolled }">
             <div class="logo">jmtanador.</div>
-            <div class="logo"><i class="mdi mdi-alert"></i>On going!</div>
+            <div class="wip blink-warning">
+                <i class="mdi mdi-alert"></i> Work in progress...
+            </div>
             <!-- Inside the <nav> -->
                 <ul class="nav-links">
                     <li><a href="#" @click.prevent="scrollToSection('home')" :class="{ active: activeSection == 'home' }">Home</a></li>
@@ -111,7 +113,6 @@
 
             <!-- ABOUT SECTION -->
             <section id="about" class="about-section">
-                <!-- ... your existing about content ... -->
                  <div class="about-container">
                     <div class="about-image-wrapper">
                         <img src="/src/assets/img-fullbody.png" alt="JM Tanador" class="about-full-img" />
@@ -136,7 +137,6 @@
                                     <i class="mdi" :class="item.icon" :style="{ color: item.color }"></i>
                                     <span class="label">{{ item.title }}</span>
                                 </div>
-                                <!-- <span>...and more</span> -->
                             </div>
                         </div>
                     </div>
@@ -181,7 +181,8 @@
 
 <script>
 import emailjs from '@emailjs/browser'; 
-import Lenis from '@studio-freight/lenis'
+import Lenis from '@studio-freight/lenis';
+
 export default {
     name: 'PortfolioHome',
     data() {
@@ -208,7 +209,6 @@ export default {
                 { title: 'Soon', icon: 'mdi-lock', color: 'white' },
                 { title: 'Soon', icon: 'mdi-lock', color: 'white' },
             ],
-            talkDia: false,
             talkDia: false,
             loading: false,
             isFormValid: false,
@@ -247,22 +247,22 @@ export default {
         handleScroll() {
             this.isScrolled = window.scrollY > 50;
 
-    const sections = ['home', 'about', 'projects', 'contact'];
-    // We use a slightly larger offset (200) for detection to 
-    // trigger the active state before the section hits the very top
-    const scrollPosition = window.scrollY + 200; 
+            const sections = ['home', 'about', 'projects', 'contact'];
+            // We use a slightly larger offset (200) for detection to 
+            // trigger the active state before the section hits the very top
+            const scrollPosition = window.scrollY + 200; 
 
-    sections.forEach((id) => {
-        const element = document.getElementById(id);
-        if (element) {
-            const offsetTop = element.offsetTop;
-            const offsetHeight = element.offsetHeight;
-            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-                this.activeSection = id;
-            }
-        }
-    });
-},
+            sections.forEach((id) => {
+                const element = document.getElementById(id);
+                if (element) {
+                    const offsetTop = element.offsetTop;
+                    const offsetHeight = element.offsetHeight;
+                    if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                        this.activeSection = id;
+                    }
+                }
+            });
+        },
         async sendEmail() {
             const { valid } = await this.$refs.form.validate();
             if (!valid) return;
@@ -397,6 +397,30 @@ html {
     font-family: 'Playfair Display', serif;
     font-size: 1.5rem;
     font-weight: bold;
+}
+
+.wip {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.blink-warning {
+    color: red;
+    font-weight: bold;
+    animation: pulse-red 1.5s infinite;
+}
+
+@keyframes pulse-red {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .nav-links {
@@ -866,6 +890,14 @@ body {
         font-size: 1.5rem;
         font-weight: bold;
         margin-right: 150px;
+    }
+
+    .wip {
+        font-family: 'Playfair Display', serif;
+        font-size: 15px;
+        font-weight: bold;
+        position:absolute;
+        top: 60px;
     }
 
     .cta-talk {
